@@ -1,3 +1,8 @@
+package main.java.Algorithm;
+
+import main.java.Palindrome.Palindrome;
+import main.java.Wrapper.Wrapper;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,7 +30,7 @@ public class Algorithm {
         return String.copyValueOf(symbols, start, maxLengthSubStr);
     };
 
-    public static void findWordsWithMaxNumberVowels(String str) {
+    public static List<String> findWordsWithMaxNumberVowels(String str) {
         String[] words = str.split("\\s|\\.");
         Pattern pattern = Pattern.compile("[ауоыиэяюёеАУОЫИЭЯЮЁЕ]");
         int maxVowelNumber = 0;
@@ -42,11 +47,14 @@ public class Algorithm {
                 uniqueWords.add(new Wrapper(s.toLowerCase(),coincidences));
             }
         }
+        List<String> listWithVowels = new LinkedList<>();
         for (Wrapper w : uniqueWords) {
             if(w.getVowelsNumber() == maxVowelNumber) {
-                System.out.println(w.value);
+                listWithVowels.add(w.getValue());
             }
         }
+
+        return listWithVowels;
     }
 
     public static String findMaxPalindrome (String str) {
@@ -59,7 +67,7 @@ public class Algorithm {
 
     public static void findPalindromeInArray(char[] arr, int start, int end, Palindrome palindrome) {
         //check this part can be max palindrome or not
-        if(palindrome.getValue().length() >= (end - start) + 1)
+        if(palindrome.getValue().length() >= (end - start) + 1 || (end - start) == 0)
             return;
         boolean hasPalindrome = true;
         int i = start;

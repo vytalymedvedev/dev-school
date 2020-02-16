@@ -1,5 +1,7 @@
+package main.java.Palindrome;
+
 public class Palindrome {
-    String value = "";
+    private String value = "";
 
     public String getValue() {
         return value;

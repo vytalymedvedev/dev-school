@@ -1,10 +1,12 @@
+package main.java.Wrapper;
+
 import java.util.Objects;
 
 public class Wrapper implements Comparable<Wrapper>{
-    String value;
-    int vowelsNumber;
+    private String value;
+    private int vowelsNumber;
 
-    Wrapper(String value, int vowelsNumber) {
+    public Wrapper(String value, int vowelsNumber) {
         this.value = value;
         this.vowelsNumber = vowelsNumber;
     }

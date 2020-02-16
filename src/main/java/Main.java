@@ -1,3 +1,7 @@
+package main.java;
+
+import main.java.Algorithm.Algorithm;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -16,10 +20,12 @@ public class Main {
         Algorithm.findWordsWithMaxNumberVowels(example1);
         Algorithm.findWordsWithMaxNumberVowels(example2);
 
-        String palindrome1 = " madam";
+        String palindrome1 = " madam murderredrum";
         String palindrome2 = "cbmurderredrumabc";
 
         System.out.println(Algorithm.findMaxPalindrome(palindrome1));
         System.out.println(Algorithm.findMaxPalindrome(palindrome2));
+        String palindrome3 = "me";
+        System.out.println(Algorithm.findMaxPalindrome(palindrome3));
     }
 }
