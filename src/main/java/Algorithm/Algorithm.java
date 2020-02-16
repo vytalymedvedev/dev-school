@@ -8,13 +8,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Algorithm {
+    // Данный алгоритм содержит цикл, вложенный в другой,
+    // но т.к. индексы (i,j) не сбрасываются после выхода из внутреннего цикла,
+    // то сложность алгоритма линейная O(n)
     public static String findMaxSubString(String str) {
         char[] symbols = str.toCharArray();
         int maxLengthSubStr = 0;
         int start = 0;
         boolean sequence = false;
-        for(int i = 0, j = -1; i < symbols.length; i++, j++) {
-            if(j==-1) continue;
+        for(int i = 1, j = 0; i < symbols.length; i++, j++) {
             int tempJ = j;
             while (i < symbols.length && symbols[j] < symbols[i]) {
                 sequence = true;
@@ -30,6 +32,9 @@ public class Algorithm {
         return String.copyValueOf(symbols, start, maxLengthSubStr);
     };
 
+    // Данный алгоритм содержит цикл, вложенный в другой.
+    // Время работы данного алгоритма напрямую зависит от длины строки
+    // и количества слов в ней. Сложность алгоритма O(n^2)
     public static List<String> findWordsWithMaxNumberVowels(String str) {
         String[] words = str.split("\\s|\\.");
         Pattern pattern = Pattern.compile("[ауоыиэяюёеАУОЫИЭЯЮЁЕ]");
@@ -57,6 +62,14 @@ public class Algorithm {
         return listWithVowels;
     }
 
+    // Данный алгоритм содержит рекурсию.
+    // Время работы данного алгоритма напрямую зависит от длины строки
+    // и максимального размера палиндрома в ней (если вообще есть).
+    // В худшем случае, когда дана большая строка, но палиндрома в ней нет,
+    // алгоритм будет проходить строку от начала до конца,
+    // затем снова, но сместившись на 1 индекс вправо,
+    // затем всё тоже самое в обратном направлении - с конца в начало и смещаясь влево.
+    // Сложность данного алгоритма O(n!)
     public static String findMaxPalindrome (String str) {
         if(str.length() < 2) return null;
         char[] symbols = str.toCharArray();
