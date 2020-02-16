@@ -16,9 +16,10 @@ public class Main {
         Algorithm.findWordsWithMaxNumberVowels(example1);
         Algorithm.findWordsWithMaxNumberVowels(example2);
 
-        String palindrome1 = "madam";
-        String palindrome2 = "murderedrum";
-        Algorithm.findMaxPalindrome(palindrome1);
-        Algorithm.findMaxPalindrome(palindrome2);
+        String palindrome1 = " madam";
+        String palindrome2 = "cbmurderredrumabc";
+
+        System.out.println(Algorithm.findMaxPalindrome(palindrome1));
+        System.out.println(Algorithm.findMaxPalindrome(palindrome2));
     }
 }

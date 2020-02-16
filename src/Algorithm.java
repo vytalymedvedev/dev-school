@@ -50,36 +50,35 @@ public class Algorithm {
     }
 
     public static String findMaxPalindrome (String str) {
+        if(str.length() < 2) return null;
         char[] symbols = str.toCharArray();
-        Set<String> uniques = new HashSet<>();
-        if(symbols.length < 3) return null;
-        for( int i = 1; i < symbols.length; i++) {
-            int start = 0;
-            int end;
-            int tempStart = i;
-            int tempEnd = i;
-            tempEnd++;
-            tempStart--;
-            boolean palindrome = false;
-            int palindromeLength = 0;
-            while(tempStart >= 0 && tempEnd < symbols.length) {
-                if(symbols[tempStart] == symbols[tempEnd]) {
-                    palindrome = true;
-                    palindromeLength++;
-                    start = tempStart;
-                    end = tempEnd;
-                    tempStart--;
-                    tempEnd++;
-                }
-                else break;
+        Palindrome palindrome = new Palindrome();
+        findPalindromeInArray(symbols, 0, symbols.length - 1, palindrome);
+        return palindrome.getValue();
+    }
+
+    public static void findPalindromeInArray(char[] arr, int start, int end, Palindrome palindrome) {
+        //check this part can be max palindrome or not
+        if(palindrome.getValue().length() >= (end - start) + 1)
+            return;
+        boolean hasPalindrome = true;
+        int i = start;
+        int j = end;
+        while(i < j) {
+            if(arr[i] != arr[j]) {
+                hasPalindrome = false;
+                break;
             }
-            if(palindrome) {
-                uniques.add(String.copyValueOf(symbols, start, palindromeLength * 2 + 1));
-            }
+            i++;
+            j--;
         }
-        for (String s : uniques) {
-            System.out.println(s);
+
+        if(hasPalindrome) {
+            palindrome.setValue(String.copyValueOf(arr, start, (end - start) + 1 ));
         }
-        return "";
+        else {
+            findPalindromeInArray(arr, start + 1, end, palindrome);
+            findPalindromeInArray(arr, start, end - 1, palindrome);
+        }
     }
 }
