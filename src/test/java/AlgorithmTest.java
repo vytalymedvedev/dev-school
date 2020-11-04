@@ -20,11 +20,11 @@ public class AlgorithmTest {
         String subString4 = "";
         String subString5 = " xxx abcdefgabcdefgklmno ";
 
-        assertEquals("abcdefg", Algorithm.findMaxSubString(subString1));
-        assertEquals("", Algorithm.findMaxSubString(subString2));
-        assertEquals("abcdefg", Algorithm.findMaxSubString(subString3));
-        assertEquals("", Algorithm.findMaxSubString(subString4));
-        assertEquals("abcdefgklmno", Algorithm.findMaxSubString(subString5));
+        assertEquals(7, Algorithm.findMaxSubString(subString1));
+        assertEquals(0, Algorithm.findMaxSubString(subString2));
+        assertEquals(7, Algorithm.findMaxSubString(subString3));
+        assertEquals(0, Algorithm.findMaxSubString(subString4));
+        assertEquals(12, Algorithm.findMaxSubString(subString5));
     }
 
     @Test

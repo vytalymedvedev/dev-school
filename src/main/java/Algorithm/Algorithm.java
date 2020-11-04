@@ -11,7 +11,7 @@ public class Algorithm {
     // Данный алгоритм содержит цикл, вложенный в другой,
     // но т.к. индексы (i,j) не сбрасываются после выхода из внутреннего цикла,
     // то сложность алгоритма линейная O(n)
-    public static String findMaxSubString(String str) {
+    public static int findMaxSubString(String str) {
         char[] symbols = str.toCharArray();
         int maxLengthSubStr = 0;
         int start = 0;
@@ -29,12 +29,13 @@ public class Algorithm {
             }
             sequence = false;
         }
-        return String.copyValueOf(symbols, start, maxLengthSubStr);
+        return maxLengthSubStr;
     };
 
     // Данный алгоритм содержит цикл, вложенный в другой.
     // Время работы данного алгоритма напрямую зависит от длины строки
-    // и количества слов в ней. Сложность алгоритма O(n^2)
+    // и количества слов в ней. В худшем случае  каждое слово будет добавлено в TreeSet (log(n)).
+    // Сложность всего алгоритма O(n^2+log(n))
     public static List<String> findWordsWithMaxNumberVowels(String str) {
         String[] words = str.split("\\s|\\.");
         Pattern pattern = Pattern.compile("[ауоыиэяюёеАУОЫИЭЯЮЁЕ]");
